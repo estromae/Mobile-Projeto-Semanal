@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Button, Text, TextInput, View, Alert, TouchableOpacity } from "react-native"
-import ResultAverage from "./ResultAverage"
+import ResultAverage from "./ResultAverage/ResultAverage"
 import styles from "./style"
 
 export default function Calculator() {
@@ -31,7 +31,7 @@ export default function Calculator() {
     }
 
     return (
-        <View>
+        <View style={styles.viewCalculator}>
             <View>
             <Text>1º valor:</Text>
             <TextInput style={styles.input}

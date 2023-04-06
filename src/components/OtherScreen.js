@@ -1,12 +1,10 @@
-import React from "react"
-import { View, Text, Button } from "react-native"
-import { StyleSheet } from "react-native"
-
+import React from "react";
+import { StyleSheet, View, Text } from "react-native";
 
 export default function AnyScreen() {
     return (
         <View>
-            <Text>outra tela</Text>
+            <Text>Esta é OUTRA TELA</Text>
         </View>
     )
 }
