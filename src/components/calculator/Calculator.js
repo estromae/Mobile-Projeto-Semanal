@@ -1,14 +1,14 @@
-import React, { useState } from "react"
+import React from "react"
 import { Button, Text, TextInput, View, Alert, TouchableOpacity } from "react-native"
 import ResultAverage from "./ResultAverage/ResultAverage"
 import styles from "./style"
 
 export default function Calculator() {
-    const [firstValue, setFirstValue] = useState(null)
-    const [secondValue, setSecondValue] = useState(null)
-    const [messageResultAverage, setMessage] = useState("Insira suas notas")
-    const [result, setAverage] = useState(null)
-    const [buttonText, setButtonText] = useState("Calcular")
+    const [firstValue, setFirstValue] = React.useState(null)
+    const [secondValue, setSecondValue] = React.useState(null)
+    const [messageResultAverage, setMessage] = React.useState("Insira suas notas")
+    const [result, setAverage] = React.useState(null)
+    const [buttonText, setButtonText] = React.useState("Calcular")
 
     function boxMessageAlert(){
         Alert.alert("Atenção", "Preencha todos os campos")
@@ -26,7 +26,7 @@ export default function Calculator() {
 
     function AverageCalcule() {
         return (
-            setAverage(((firstValue + secondValue) / 2).toFixed(1))
+            setAverage((parseFloat(firstValue) + parseFloat(secondValue)) / 2)
         )
     }
 
@@ -50,7 +50,9 @@ export default function Calculator() {
                 <Text style={styles.textButton} >{buttonText}</Text>
             </TouchableOpacity> */}
             </View>
-            <ResultAverage messageResultAverage={messageResultAverage} resultAverage={result}/>
+            <ResultAverage 
+            style={styles.messageAlert}
+            messageResultAverage={messageResultAverage} resultAverage={result}/>
         </View>
     )
 };

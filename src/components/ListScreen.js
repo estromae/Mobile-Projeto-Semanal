@@ -1,28 +1,29 @@
 import React from "react";
-import { StyleSheet, View, Text, SafeAreaView, FlatList, StatusBar } from "react-native";
+import { StyleSheet, View, Text, Image, SafeAreaView, FlatList, StatusBar } from "react-native";
 
-const DataList = [
-    { id: '01', title: 'Fusca', },
-    { id: '02', title: 'Celta', },
+const DataListCars = [
+    { id: '01', title: 'Fusca', color: 'blue' },
+    { id: '02', title: 'Celta', color: 'red' },
 ];
 
-const Item = ({title}) => {
+const Item = ({title}) => (
     <View style={styles.item}>
         <Text style={styles.title}>{title}</Text>
     </View>
-}
+)
 
-const ListItems = () => {
+export default function ListItems() {
     return (
       <SafeAreaView style={styles.container}>
+        <Text>Lista de Carros</Text>
         <FlatList
-          data={DataList}
-          renderItem={({item}) => <Item title={item.title} />}
-          keyExtractor={item => item.id}
+            data={DataListCars}
+            renderItem={({item}) => <Item title={item.title}/>}
+            keyExtractor={item => item.id}
         />
       </SafeAreaView>
     );
-  };
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -31,15 +32,13 @@ const styles = StyleSheet.create({
     },
 
     item: {
-        backgroundColor: 'red',
-        padding: 20,
+        backgroundColor: 'gray',
+        padding: 5,
         marginVertical: 8,
-        marginHorizontal: 16,
+        marginHorizontal: 10,
     },
 
     title: {
-        fontSize: 32,
+        fontSize: 22,
     },
 })
-
-export default ListItems;

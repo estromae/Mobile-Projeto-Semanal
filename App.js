@@ -5,6 +5,7 @@ import HomeScreen from './src/components/HomeScreen';
 import AnyScreen from './src/components/OtherScreen';
 import Calculator from './src/components/calculator/Calculator';
 import ListItems from './src/components/ListScreen';
+import Counter from './src/components/CounterScreen';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ export default function App() {
         <Stack.Screen name="OtherScreen" component={AnyScreen}/>
         <Stack.Screen name="Calculator" component={Calculator}/>
         <Stack.Screen name="ListScreen" component={ListItems}/>
+        <Stack.Screen name="CounterScreen" component={Counter}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
