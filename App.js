@@ -6,6 +6,7 @@ import AnyScreen from './src/components/OtherScreen';
 import Calculator from './src/components/calculator/Calculator';
 import ListItems from './src/components/ListScreen';
 import Counter from './src/components/CounterScreen';
+import Gallery from './src/components/GalleryScreen';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ export default function App() {
         <Stack.Screen name="Calculator" component={Calculator}/>
         <Stack.Screen name="ListScreen" component={ListItems}/>
         <Stack.Screen name="CounterScreen" component={Counter}/>
+        <Stack.Screen name="GalleryScreen" component={Gallery}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

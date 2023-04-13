@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text, Image, SafeAreaView, FlatList, StatusBar } from "react-native";
+import { StyleSheet, View, Text, SafeAreaView, FlatList, StatusBar } from "react-native";
 
 const DataListCars = [
     { id: '01', title: 'Fusca', color: 'blue' },
@@ -14,14 +14,14 @@ const Item = ({title}) => (
 
 export default function ListItems() {
     return (
-      <SafeAreaView style={styles.container}>
-        <Text>Lista de Carros</Text>
-        <FlatList
-            data={DataListCars}
-            renderItem={({item}) => <Item title={item.title}/>}
-            keyExtractor={item => item.id}
-        />
-      </SafeAreaView>
+        <SafeAreaView style={styles.container}>
+            <Text>Lista de Carros</Text>
+            <FlatList
+                data={DataListCars}
+                renderItem={({item}) => <Item title={item.title}/>}
+                keyExtractor={item => item.id}
+            />
+        </SafeAreaView>
     );
 };
 
