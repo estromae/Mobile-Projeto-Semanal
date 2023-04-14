@@ -1,5 +1,5 @@
 import React from "react"
-import { Button, Text, TextInput, View, Alert, TouchableOpacity } from "react-native"
+import { Button, Text, TextInput, View, Alert, TouchableOpacity, Vibration, Pressable, Keyboard } from "react-native"
 import ResultAverage from "./ResultAverage/ResultAverage"
 import styles from "./style"
 
@@ -11,10 +11,11 @@ export default function Calculator() {
     const [buttonText, setButtonText] = React.useState("Calcular")
 
     function boxMessageAlert(){
+        Vibration.vibrate()
         Alert.alert("Atenção", "Preencha todos os campos")
     }
 
-    function ValidadeInput(){
+    function ValidateInput(){
         if (firstValue != null && secondValue != null){
             AverageCalcule()
             setMessage("Sua média é")
@@ -31,7 +32,7 @@ export default function Calculator() {
     }
 
     return (
-        <View style={styles.viewCalculator}>
+        <Pressable onPress={Keyboard.dismiss} style={styles.viewCalculator}>
             <View>
             <Text>1º valor:</Text>
             <TextInput style={styles.input}
@@ -45,15 +46,15 @@ export default function Calculator() {
             keyboardType="numeric" 
             onChangeText={setSecondValue} 
             value={secondValue}/>
-            <Button title={buttonText} onPress={() => ValidadeInput()}/>
-            {/* <TouchableOpacity style={styles.button} onPress={() => ValidadeInput()}>
+            <Button title={buttonText} onPress={() => ValidateInput()}/>
+            {/* <TouchableOpacity style={styles.button} onPress={() => ValidateInput()}>
                 <Text style={styles.textButton} >{buttonText}</Text>
             </TouchableOpacity> */}
             </View>
             <ResultAverage 
             style={styles.messageAlert}
             messageResultAverage={messageResultAverage} resultAverage={result}/>
-        </View>
+        </Pressable>
     )
 };
 
