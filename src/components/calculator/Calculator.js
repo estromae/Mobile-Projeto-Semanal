@@ -1,14 +1,15 @@
 import React from "react"
-import { Button, Text, TextInput, View, Alert, TouchableOpacity, Vibration, Pressable, Keyboard } from "react-native"
+import { Button, Text, TextInput, View, Alert, TouchableOpacity, Vibration, Pressable, Keyboard,FlatList, SafeAreaView } from "react-native"
 import ResultAverage from "./ResultAverage/ResultAverage"
 import styles from "./style"
 
 export default function Calculator() {
-    const [firstValue, setFirstValue] = React.useState(null)
-    const [secondValue, setSecondValue] = React.useState(null)
+    const [firstValue, setFirstValue] = React.useState('')
+    const [secondValue, setSecondValue] = React.useState('')
     const [messageResultAverage, setMessage] = React.useState("Insira suas notas")
     const [result, setAverage] = React.useState(null)
     const [buttonText, setButtonText] = React.useState("Calcular")
+    const [resultAverageList] = React.useState([])
 
     function boxMessageAlert(){
         Vibration.vibrate()
@@ -26,9 +27,11 @@ export default function Calculator() {
     }
 
     function AverageCalcule() {
-        return (
-            setAverage((parseFloat(firstValue) + parseFloat(secondValue)) / 2)
-        )
+        let resultCorrent = (parseFloat(firstValue) + parseFloat(secondValue)) / 2
+        //setResultAverageList((arr) => [...arr, {id: new Date().getTime(), average: resultCorrent}])
+        resultAverageList.unshift(resultCorrent)
+        console.log(resultAverageList)
+        setAverage(resultCorrent)
     }
 
     return (
@@ -54,6 +57,13 @@ export default function Calculator() {
             <ResultAverage 
             style={styles.messageAlert}
             messageResultAverage={messageResultAverage} resultAverage={result}/>
+            <SafeAreaView>
+                <FlatList
+                    data={resultAverageList}
+                    renderItem={({item}) => <Text>{item}</Text>}
+                    keyExtractor={() => Math.floor(Math.random() * 1000)}
+                />
+            </SafeAreaView>
         </Pressable>
     )
 };
